@@ -1,0 +1,500 @@
+select distinct(sender_type) from messages;
+explain SELECT COUNT(*) AS count_all, latest_coach.sender_id AS latest_coach_sender_id FROM "messages" INNER JOIN ( SELECT DISTINCT ON (participant_id) participant_id, sender_id FROM messages WHERE sender_type ='Participant' ORDER BY participant_id, sent_at DESC ) AS latest_coach ON messages.participant_id = latest_coach.participant_id WHERE ("messages"."sent_at" BETWEEN '2016-07-27 16:48:03.145819' AND  '2016-07-27 16:41:53.447863') AND "messages"."message_type" = 1 AND "messages"."sender_type" ='Participant'  GROUP BY latest_coach.sender_id;
+explain SELECT COUNT(*) AS count_all, latest_coach.sender_id AS latest_coach_sender_id FROM "messages" INNER JOIN ( SELECT DISTINCT ON (participant_id) participant_id, sender_id FROM messages WHERE sender_type ='Participant' ORDER BY participant_id, sent_at DESC ) AS latest_coach ON messages.participant_id = latest_coach.participant_id WHERE ("messages"."sent_at" BETWEEN '2016-07-27 16:48:03.145819' AND  '2016-07-27 16:41:53.447863') AND "messages"."message_type" = 1 AND "messages"."sender_type" ='Participant'  GROUP BY latest_coach.sender_id;
+explain SELECT COUNT(*) AS count_all, latest_coach.sender_id AS latest_coach_sender_id FROM "messages" INNER JOIN ( SELECT DISTINCT ON (participant_id) participant_id, sender_id FROM messages WHERE sender_type ='Participant' ORDER BY participant_id, sent_at DESC ) AS latest_coach ON messages.participant_id = latest_coach.participant_id WHERE ("messages"."sent_at" BETWEEN '2016-07-27 16:48:03.145819' AND  '2016-07-27 16:41:53.447863') AND "messages"."message_type" = 1 AND "messages"."sender_type" ='Participant'  GROUP BY latest_coach.sender_id;
+SELECT COUNT(*) AS count_all, latest_coach.sender_id AS latest_coach_sender_id FROM "messages" INNER JOIN ( SELECT DISTINCT ON (participant_id) participant_id, sender_id FROM messages WHERE sender_type ='Participant' ORDER BY participant_id, sent_at DESC ) AS latest_coach ON messages.participant_id = latest_coach.participant_id WHERE ("messages"."sent_at" BETWEEN '2016-07-27 16:48:03.145819' AND  '2016-07-27 16:41:53.447863') AND "messages"."message_type" = 1 AND "messages"."sender_type" ='Participant'  GROUP BY latest_coach.sender_id;
+ select relname         as "table",       last_vacuum     as "last manual vacuum",       last_autovacuum as "last auto vacuum",       last_analyze    as "last manual analyze",       last_autoanalyze as "last auto analyze",       current_timestamp from pg_stat_user_tables;
+\q
+\dt
+\w concierge_prod_stats_sleuthing.log
+select current_timestamp;
+SELECT d.datname AS Name,  pg_catalog.pg_get_userbyid(d.datdba) AS Owner,    CASE WHEN pg_catalog.has_database_privilege(d.datname, 'CONNECT')        THEN pg_catalog.pg_size_pretty(pg_catalog.pg_database_size(d.datname))        ELSE 'No Access'    END AS SIZEFROM pg_catalog.pg_database d    ORDER BY    CASE WHEN pg_catalog.has_database_privilege(d.datname, 'CONNECT')        THEN pg_catalog.pg_database_size(d.datname)        ELSE NULL    END DESC -- nulls first    LIMIT 20;
+select relname         as "table",       heap_blks_read  as "heap from disc",       heap_blks_hit   as "heap from cache",       idx_blks_read   as "index from disc",       idx_blks_hit    as "index from cache",       toast_blks_read as "toast from disc",       toast_blks_hit  as "toast from cache",       tidx_blks_read  as "toast index disc",       tidx_blks_hit   as "toast index cache"  from pg_statio_user_tables;
+select relname         as "table",       seq_scan        as "table scans",       idx_scan        as "index lookups"  from pg_stat_user_tables;
+select relname         as "table",       seq_scan        as "table scans",       seq_tup_read    as "tuples scanned",       idx_scan        as "index lookups",       idx_tup_fetch   as "tuples fetched via index"  from pg_stat_user_tables;
+select pg_size_pretty(relpages * 8192) as size  from pg_class ;
+select relpages * 8192 as size_in_bytes  from pg_class;
+select relpages * 8192 as size_in_bytes  from pg_class;
+\d pg_class
+select relname, relpages * 8192 as size_in_bytes  from pg_class;
+select relname, relpages * 8192 as size_in_bytes  from pg_class where relname not like 'pg%';
+select relname, relpages * 8192 as size_in_bytes  from pg_class where relname not like 'pg%' order by relname;
+\dt
+select relpages * 8192 as size_in_bytes  from pg_class where relname in ('ar_internal_metadata','assessment_versions','assessments','contract_versions','contracts','customer_versions','customers','device_subsidies','device_subsidy_versions','healthways','healthways_versions','organization_versions','organizations','program_screenshot_versions','program_screenshots','program_versions','programs','rewards_behavior_versions','rewards_behaviors','rewards_incentive_versions','rewards_incentives','schema_migrations','segment_versions','segments','users');
+select relpages * 8192 as size_in_bytes  from pg_class where relname in ('ar_internal_metadata','assessment_versions','assessments','contract_versions','contracts','customer_versions','customers','device_subsidies','device_subsidy_versions','healthways','healthways_versions','organization_versions','organizations','program_screenshot_versions','program_screenshots','program_versions','programs','rewards_behavior_versions','rewards_behaviors','rewards_incentive_versions','rewards_incentives','schema_migrations','segment_versions', 'segments','users');
+ select relneame, relpages * 8192 as size_in_bytes  from pg_class where relname in ('ar_internal_metadata','assessment_versions','assessments','contract_versions','contracts','customer_versions','customers','device_subsidies','device_subsidy_versions','healthways','healthways_versions','organization_versions','organizations','program_screenshot_versions','program_screenshots','program_versions','programs','rewards_behavior_versions','rewards_behaviors','rewards_incentive_versions','rewards_incentives','schema_migrations','segment_versions','segments','users');
+ select relneame, relpages * 8192 as size_in_bytes  from pg_class where relname in ('ar_internal_metadata','assessment_versions','assessments','contract_versions','contracts','customer_versions','customers','device_subsidies','device_subsidy_versions','healthways','healthways_versions','organization_versions','organizations','program_screenshot_versions','program_screenshots','program_versions','programs','rewards_behavior_versions','rewards_behaviors','rewards_incentive_versions','rewards_incentives','schema_migrations','segment_versions','segments','users');
+ select relneame, relpages * 8192 as size_in_bytes  from pg_class where relname in ('ar_internal_metadata','assessment_versions','assessments','contract_versions','contracts','customer_versions','customers','device_subsidies','device_subsidy_versions','healthways','healthways_versions','organization_versions','organizations','program_screenshot_versions','program_screenshots','program_versions','programs','rewards_behavior_versions','rewards_behaviors','rewards_incentive_versions','rewards_incentives','schema_migrations','segment_versions','segments','users');
+ select relname, relpages * 8192 as size_in_bytes  from pg_class where relname in ('ar_internal_metadata','assessment_versions','assessments','contract_versions','contracts','customer_versions','customers','device_subsidies','device_subsidy_versions','healthways','healthways_versions','organization_versions','organizations','program_screenshot_versions','program_screenshots','program_versions','programs','rewards_behavior_versions','rewards_behaviors','rewards_incentive_versions','rewards_incentives','schema_migrations','segment_versions','segments','users');
+select relname         as "table",        n_live_tup      as "live tuples",       n_dead_tup      as "dead tuples"  from pg_stat_user_tables; 
+select relname         as "table",       last_vacuum     as "last manual vacuum",       last_autovacuum as "last auto vacuum",       last_analyze    as "last manual analyze",       last_autoanalyze as "last auto analyze"  from pg_stat_user_tables;
+select relname         as "table",       last_vacuum     as "last manual vacuum",       last_autovacuum as "last auto vacuum",       last_analyze    as "last manual analyze",       last_autoanalyze as "last auto analyze",       current_timestamp from pg_stat_user_tables;
+\q
+\d quitnet_participant_versions
+\dt
+\?
+select count(*) from quitnet_participant_versions;
+SELECT *    FROM pg_stat_activity;
+\d coaches
+\d quitnet_participant_versions
+select relname         as "table",       last_vacuum     as "last manual vacuum",       last_autovacuum as "last auto vacuum",       last_analyze    as "last manual analyze",       last_autoanalyze as "last auto analyze"  from pg_stat_user_tables;
+select current_timestamp;
+\help analyze
+\q
+\l
+show all;
+\?
+\o hello200_production_936_show_all_variables_aug_03_2016.txt
+\conninfo
+show all;
+\q
+show all;
+\o analysis_datawarehouse_prod_show_all_aug_03_2016.txt
+\conninfo
+show all;
+\q
+\l
+\q
+\l
+CREATE DATABASE hello200_staging ENCODING 'UTF8' LC_COLLATE 'en_US.UTF-8' LC_CTYPE 'en_US.UTF-8';
+        CREATE ROLE hello200_staging_app PASSWORD 'H6gOzpo1xfwSxdjr' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN NOREPLICATION;
+        ALTER DATABASE hello200_staging OWNER TO hello200_staging_app;
+ GRANT CONNECT ON DATABASE hello200_staging to hello200_staging_app;
+           GRANT USAGE ON SCHEMA public  to hello200_staging_app;
+           GRANT SELECT ON ALL SEQUENCES IN SCHEMA public  TO hello200_staging_app;
+           GRANT SELECT ON ALL TABLES IN SCHEMA public  TO  hello200_staging_app;
+           ALTER DEFAULT PRIVILEGES  IN SCHEMA public GRANT SELECT ON SEQUENCES  TO hello200_staging_app;
+           ALTER DEFAULT PRIVILEGES  IN SCHEMA public GRANT SELECT ON TABLES  TO hello200_staging_app;
+\c hello200_staging hello200_staging_app
+\dt
+create table test as select * from pg_catalog.pg_namespace;
+\dt
+select count(*) from test;
+select * from test;
+drop table test;
+/conninfo
+\conninfo
+\dt
+\dx
+create extension hstore;
+CREATE EXTENSION IF NOT EXISTS "hstore";
+\c hello200_staging meyouhealth 
+\conninfo
+CREATE EXTENSION IF NOT EXISTS "hstore";
+\dx
+\q
+\l
+CREATE DATABASE iris_staging ENCODING 'UTF8' LC_COLLATE 'en_US.UTF-8' LC_CTYPE 'en_US.UTF-8';
+        CREATE ROLE iris_staging_app PASSWORD 'Jg3UFDAinKHRerW6' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN NOREPLICATION;
+        ALTER DATABASE iris_staging OWNER TO iris_staging_app;
+GRANT CONNECT ON DATABASE iris_staging to iris_staging_app;
+           GRANT USAGE ON SCHEMA public  to iris_staging_app;
+           GRANT SELECT ON ALL SEQUENCES IN SCHEMA public  TO iris_staging_app;
+           GRANT SELECT ON ALL TABLES IN SCHEMA public  TO  iris_staging_app;
+           ALTER DEFAULT PRIVILEGES  IN SCHEMA public GRANT SELECT ON SEQUENCES  TO iris_staging_app;
+           ALTER DEFAULT PRIVILEGES  IN SCHEMA public GRANT SELECT ON TABLES  TO iris_staging_app;
+           \c iris_staging iris_staging_app
+\dt
+create table test as select * from pg_catalog.pg_namespace;
+select * from test;
+/dt
+\dt
+drop test;
+drop table test;
+\dt
+           \c iris_staging meyouhealth 
+CREATE EXTENSION IF NOT EXISTS "hstore";
+\dx
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+\q
+\l
+CREATE DATABASE quitnet_staging ENCODING 'UTF8' LC_COLLATE 'en_US.UTF-8' LC_CTYPE 'en_US.UTF-8';
+        CREATE ROLE quitnet_staging_app PASSWORD 'LNC6Ke5bpQG3f3' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN NOREPLICATION;
+        ALTER DATABASE quitnet_staging OWNER TO quitnet_staging_app;
+GRANT CONNECT ON DATABASE quitnet_staging to quitnet_staging_app;
+           GRANT USAGE ON SCHEMA public  to quitnet_staging_app;
+           GRANT SELECT ON ALL SEQUENCES IN SCHEMA public  TO quitnet_staging_app;
+           GRANT SELECT ON ALL TABLES IN SCHEMA public  TO  quitnet_staging_app;
+           ALTER DEFAULT PRIVILEGES  IN SCHEMA public GRANT SELECT ON SEQUENCES  TO quitnet_staging_app;
+           ALTER DEFAULT PRIVILEGES  IN SCHEMA public GRANT SELECT ON TABLES  TO quitnet_staging_app;
+           \c quitnet_staging quitnet_staging_app
+\dt
+create table test as select * from pg_catalog.pg_namespace;
+select * from test;
+drop table test;
+\conninfo
+ \c quitnet_staging meyouhealth
+CREATE EXTENSION IF NOT EXISTS "hstore";
+           CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+\dx
+           CREATE EXTENSION IF NOT EXISTS "unaccent";
+\dx
+\dt
+select count(*) from follows;
+\conninfo
+           \c quitnet_staging quitnet_staging_app
+select count(*) from follows;
+\q
+\l
+SELECT * FROM pg_stat_replication;
+\x
+SELECT * FROM pg_stat_replication;
+\du
+\q
+\l
+\q
+\l
+\dt
+\dt
+select count(*) from imported_users;
+\q
+\dt
+select count(*) from imported_users;
+\q
+/l
+\l
+\dx
+\dt
+\l
+;
+\q
+\l
+select * from pg_stats;
+select * from pg_stat_activity;
+\?
+\w typical_session_activity.log
+select current_timestamp;
+select * from pg_stat_activity;
+\w stats-check-all.log
+select current_timestamp;
+\?
+\i check-last-vacuum-stats.sql
+\w all-table-checks.log
+\i table-checks.sql
+\?
+\?
+\g check-last-vacuum-stats.sql check-last-vacuum-stats.log
+\g check-last-vacuum-stats.sql 
+\q
+\dt
+\w table-list
+\dt
+\q
+\i pg-stats-tables-all.sql
+select count(*) from rewards_data_origins;
+select * from rewards_data_origins;
+select * from rewards_data_origins;
+SELECT *, current_timestamp from pg_stat_activity;
+\dt
+SELECT *, current_timestamp from pg_stat_activity;
+SELECT *, current_timestamp from pg_stat_activity;
+\q
+SELECT *, current_timestamp from pg_stat_activity;
+
+\?
+\o pg-stats-activity.log
+SELECT *, current_timestamp from pg_stat_activity;
+\w 30 SELECT *, current_timestamp from pg_stat_activity;
+\?
+\watch 30 SELECT *, current_timestamp from pg_stat_activity;
+\o pg-stats-activity.log
+SELECT *, current_timestamp from pg_stat_activity;
+\o pg-stats-activity.log
+SELECT *, current_timestamp from pg_stat_activity;
+SELECT *, current_timestamp from pg_stat_activity;
+SELECT *, current_timestamp from pg_stat_activity;
+SELECT *, current_timestamp from pg_stat_activity;
+SELECT *, current_timestamp from pg_stat_activity;
+SELECT *, current_timestamp from pg_stat_activity;
+\q
+SELECT *, current_timestamp from pg_stat_activity;
+SELECT *, current_timestamp from pg_stat_activity;
+\q
+SELECT *, current_timestamp from pg_stat_activity;
+SELECT *, current_timestamp from pg_stat_activity;
+SELECT *, current_timestamp from pg_stat_activity;
+\o pg-stat-activity-during-analyze.log
+SELECT *, current_timestamp from pg_stat_activity;
+SELECT *, current_timestamp from pg_stat_activity;
+SELECT *, current_timestamp from pg_stat_activity;
+\q
+\dt
+select count(*) from product_credentials;
+\conninfo
+        ALTER DEFAULT PRIVILEGES  IN SCHEMA public GRANT SELECT ON SEQUENCES  TO reporting_production_app;
+        ALTER DEFAULT PRIVILEGES  IN SCHEMA public GRANT SELECT ON TABLES  TO reporting_production_app;
+ALTER DEFAULT PRIVILEGES  IN SCHEMA public GRANT SELECT ON SEQUENCES  TO meyouhealth;
+ALTER DEFAULT PRIVILEGES  IN SCHEMA public GRANT SELECT ON TABLES  TO meyouhealth;
+select count(*) from product_credentials;
+\l
+\conninfo
+\q
+\conninfo
+\dt
+select count(*) from product_credentials;
+GRANT CONNECT ON DATABASE wellbeingid_production to meyouhealth;
+        GRANT USAGE ON SCHEMA public  to meyouhealth;
+        GRANT SELECT ON ALL SEQUENCES IN SCHEMA public  TO meyouhealth;
+        GRANT SELECT ON ALL TABLES IN SCHEMA public  TO  meyouhealth;
+\dt awsdms
+\dt awsdms%
+\dt awsdms_ddl_audit
+        GRANT SELECT ON ALL TABLES IN SCHEMA public  TO  meyouhealth;
+\conninfo
+\q
+\dt awsdms_ddl_audit
+select count(*) from awsdms_ddl_audit;
+\dt
+select count(*) from schema_migrations;
+\conninfo
+        GRANT SELECT ON ALL TABLES IN SCHEMA public  TO  meyouhealth;
+\dt background_enrollers
+\dt
+\dt awsdms_dddl_audit
+select count(*) from awsdms_ddl_audit;
+\conninfo
+\q
+select count(*) from awsdms_ddl_audit;
+\conninfo
+\dt
+\q
+\dt awsdms_ddl_audit
+\h alter table
+\conninfo
+ALTER TABLE <tablename> OWNER TO <username>
+\c
+;
+ALTER table awsdms_ddl_audit owner to wellbeingid_production_app;
+drop table awsdms_ddl_audit;
+\dt
+drop table awsdms_ddl_audit;
+\df awsdms_intercept_ddl
+\d awsdms_intercept_ddl
+\?
+\?
+\dy
+CREATE OR REPLACE FUNCTION awsdms_intercept_ddl()  RETURNS event_triggerLANGUAGE plpgsql  AS $$  declare _qry text;BEGIN      if (tg_tag='CREATE TABLE' or tg_tag='ALTER TABLE' or tg_tag='DROP TABLE') then                 SELECT current_query() into _qry;                         insert into awsdms_ddl_audit                                 values                                         (                                                     default,current_timestamp,current_user,cast(TXID_CURRENT()as varchar(16)),tg_tag,0,'',current_schema,_qry                                                             );                                                                     delete from <objects_schema>.awsdms_ddl_audit;    end if;END;$$;
+\conninfo
+DROP FUNCTION IF EXISTS public.awsdms_intercept_ddl();
+DROP FUNCTION IF EXISTS public.awsdms_intercept_ddl();
+DROP TABLE public.awsdms_ddl_audit;
+DROP TABLE public.awsdms_ddl_audit CASCADE;
+DROP FUNCTION IF EXISTS public.awsdms_intercept_ddl() CASCADE;
+\dy
+\dt awsdms_ddl_audit;
+drop table awsdms_ddl_audit;
+\dt awsdms_ddl_audit;
+\q
+\conninfo
+\dt
+select count(*) from sponsers;
+select count(*) from sponsors;
+create table awsdms_ddl_audit(      c_key    bigserial primary key,      c_time   timestamp,    -- Informational      c_user   varchar(64),  -- Informational: current_user      c_txn    varchar(16),  -- Informational: current transaction      c_tag    varchar(24),  -- Either 'CREATE TABLE' or 'ALTER TABLE' or 'DROP TABLE'      c_oid    integer,      -- For future use - TG_OBJECTID      c_name   varchar(64),  -- For future use - TG_OBJECTNAME      c_schema varchar(64),  -- For future use - TG_SCHEMANAME. For now - holds current_schema      c_ddlqry  text         -- The DDL query associated with the current DDL event);
+CREATE OR REPLACE FUNCTION awsdms_intercept_ddl()  RETURNS event_triggerLANGUAGE plpgsql  AS $$  declare _qry text;BEGIN      if (tg_tag='CREATE TABLE' or tg_tag='ALTER TABLE' or tg_tag='DROP TABLE') then                 SELECT current_query() into _qry;                         insert into awsdms_ddl_audit                                 values                                         (                                                     default,current_timestamp,current_user,cast(TXID_CURRENT()as varchar(16)),tg_tag,0,'',current_schema,_qry                                                             );                                                                     delete from awsdms_ddl_audit;    end if;END;$$;
+\dt awsdms_ddl_audit
+\dy awsdms_intercept_ddl
+\df awsdms_intercept_ddl
+\conninfo
+ SELECT * from pg_activity;
+ SELECT * from pg_stats_activity;
+SELECT *, current_timestamp from pg_stat_activity;
+SELECT *, current_timestamp from pg_stat_activity;
+\q
+select * from pg_replication_slots;
+select * from pg_replication_slots;
+SELECT pg_drop_replication_slot('22zvlks6zojyshu3_00016417_0b9a28e3_2ee0_4daa_b6d2_d620025f5837');
+q\q
+select * from pg_replication_slots;
+SELECT pg_drop_replication_slot('22zvlks6zojyshu3_00016417_0b9a28e3_2ee0_4daa_b6d2_d620025f5837');
+select * from pg_replication_slots;
+SELECT pg_drop_replication_slot('ul4k6tigak3usoxg_00016417_6fe2ccb3_ffac_4546_9d5b_f616b0833044');
+select * from pg_replication_slots;
+select * from pg_replication_slots;
+select * from pg_replication_slots;
+select current_timestamp;
+\conninfo
+select * from pg_replication_slots;
+select * from pg_stat_activity;
+\d users
+\q
+select * from pg_stat_activity;
+select * from pg_replication_slots;
+SELECT xlog_position FROM pg_create_logical_replication_slot('dfef4xyqbhgf33y7_00016417_d508f78c_3518_4c6f_9569_e80b61c69687', 'test_decoding');
+select * from pg_replication_slots;
+select * from pg_replication_slots;
+select * from pg_replication_slots;
+select * from pg_replication_slots;
+select * from pg_replication_slots;
+\dt
+select * from awsdms_ddl_audit;
+\q
+select * from awsdms_ddl_audit;
+\dy
+\d awsdms_intercept_ddl
+drop table awsdms_ddl_audit;
+\dt awsdms_ddl_audit
+drop table public.awsdms_ddl_audit;
+drop function awsdms_intercept_ddl;
+drop event trigger awsdms_intercept_ddl;
+\conninfo
+drop event trigger awsdms_intercept_ddl;
+\q
+DROP FUNCTION IF EXISTS public.awsdms_intercept_ddl();
+DROP FUNCTION IF EXISTS public.awsdms_intercept_ddl() CASCADE;
+DROP TABLE public.awsdms_ddl_audit;
+\q
+\?
+\?
+\i aws-dms-create-objects.sql
+GRANT ALL ON TRIGGER public.awsdms_intercept_ddl TO wellbeingid_production_app;
+GRANT SELECT ON TRIGGER public.awsdms_intercept_ddl TO wellbeingid_production_app;
+GRANT SELECT ON TRIGGER awsdms_intercept_ddl() TO wellbeingid_production_app;
+\q
+\dt aws
+\dt aws
+\dt 
+drop
+CREATE TABLE awsdms_ddl_audit (    c_key bigint NOT NULL,    c_time timestamp without time zone,    c_user character varying(64),    c_txn character varying(16),    c_tag character varying(24),    c_oid integer,    c_name character varying(64),    c_schema character varying(64),    c_ddlqry text);
+ALTER TABLE awsdms_ddl_audit OWNER TO wellbeingid_production_app;
+select * from awsdms_ddl_audit;
+select * from pg_replication_slots;
+select * from pg_replication_slots;
+ SELECT pg_drop_replication_slot('dfef4xyqbhgf33y7_00016417_d508f78c_3518_4c6f_9569_e80b61c69687');
+\q
+select * from pg_replication_slots;
+SELECT pg_drop_replication_slot('dfef4xyqbhgf33y7_00016417_d508f78c_3518_4c6f_9569_e80b61c69687');
+SELECT pg_drop_replication_slot('ul4k6tigak3usoxg_00016417_6fe2ccb3_ffac_4546_9d5b_f616b0833044');
+select * from pg_replication_slots;
+\dt
+DROP FUNCTION IF EXISTS public.awsdms_intercept_ddl() CASCADE;
+DROP TABLE public.awsdms_ddl_audit;
+select * from pg_replication_slots;
+\?
+\dy
+\dt awdms%
+\dt
+\q
+\dt external_app
+\dt 
+/dt external_data
+\dt external_data
+\d eligibility_records
+select * from pg_stat_activity;
+select * from pg_stat_activity;
+\dt
+\q
+\ds
+\ds
+\dt
+select * from pg_replication_slots;
+\conninfo
+\dt 
+select count(*) from attempted_registrations;
+select count(*) from background_enrollers;
+\conninfo
+select * from pg_replication_slots;
+select * from pg_replication_slots;
+SELECT "key","value","created_at","updated_at" FROM "public"."ar_internal_metadata" limit 10;
+select count(*) from ar_internal_metadata;
+\conninfo
+GRANT ALL ON TABLE ar_internal_metadata TO meyouhealth;
+\conninfo
+\q
+select count(*) from ar_internal_metadata;
+\conninfo
+\q
+select count(*) from customers;
+select count(*) from public.auto_product_enrollments;
+\conninfo
+\d public.auto_product_enrollments
+ \q
+\l
+\dt
+DROP FUNCTION IF EXISTS public.awsdms_intercept_ddl() CASCADE;
+\dt
+\q
+DROP FUNCTION IF EXISTS public.awsdms_intercept_ddl() CASCADE;
+DROP TABLE public.awsdms_ddl_audit;
+\dt
+quit
+\q
+\l
+quit
+\q
+q
+\q
+\q
+\q
+\q
+\l
+\c hello200_development heidischmidt abracadabra
+\conninfo
+\c help
+\c --help
+\c
+\c heidischmidt hello200_development
+\c heidischmidt 127.0.0.1 hello200_development
+\q
+\dt
+\q
+SELECT d.datname AS Name,  pg_catalog.pg_get_userbyid(d.datdba) AS Owner,    CASE WHEN pg_catalog.has_database_privilege(d.datname, 'CONNECT')        THEN pg_catalog.pg_size_pretty(pg_catalog.pg_database_size(d.datname))        ELSE 'No Access'    END AS SIZEFROM pg_catalog.pg_database d    ORDER BY    CASE WHEN pg_catalog.has_database_privilege(d.datname, 'CONNECT')        THEN pg_catalog.pg_database_size(d.datname)        ELSE NULL    END DESC -- nulls first    LIMIT 20;
+SELECT * FROM pg_replication_slots;
+\c 2b4d4c2i2pne6vuc_00016417_36b6f6ed_0aa9_4de6_841b_38fdbc326d74
+SELECT * FROM pg_replication_slots;
+SELECT pg_drop_replication_slot('2b4d4c2i2pne6vuc_00016417_36b6f6ed_0aa9_4de6_841b_38fdbc326d74');
+SELECT * FROM pg_replication_slots;
+SELECT d.datname AS Name,  pg_catalog.pg_get_userbyid(d.datdba) AS Owner,    CASE WHEN pg_catalog.has_database_privilege(d.datname, 'CONNECT')        THEN pg_catalog.pg_size_pretty(pg_catalog.pg_database_size(d.datname))        ELSE 'No Access'    END AS SIZEFROM pg_catalog.pg_database d    ORDER BY    CASE WHEN pg_catalog.has_database_privilege(d.datname, 'CONNECT')        THEN pg_catalog.pg_database_size(d.datname)        ELSE NULL    END DESC -- nulls first    LIMIT 20;
+select * from pg_stat_archiver ;
+\?
+\t
+select * from pg_stat_archiver ;
+\t
+select * from pg_stat_archiver ;
+\w
+\?
+select * from pg_stat_archiver ;
+SELECT *,    current_setting('archive_mode')::BOOLEAN        AND (last_failed_wal IS NULL            OR last_failed_wal <= last_archived_wal)        AS is_archiving,    CAST (archived_count AS NUMERIC)        / EXTRACT (EPOCH FROM age(now(), stats_reset))        AS current_archived_wals_per_secondFROM pg_stat_archiver;
+SELECT *,    current_setting('archive_mode')::BOOLEAN        AND (last_failed_wal IS NULL            OR last_failed_wal <= last_archived_wal)        AS is_archiving,    CAST (archived_count AS NUMERIC)        / EXTRACT (EPOCH FROM age(now(), stats_reset))        AS current_archived_wals_per_secondFROM pg_stat_archiver;
+SELECT * FROM pg_replication_slots;
+SELECT d.datname AS Name,  pg_catalog.pg_get_userbyid(d.datdba) AS Owner,    CASE WHEN pg_catalog.has_database_privilege(d.datname, 'CONNECT')        THEN pg_catalog.pg_size_pretty(pg_catalog.pg_database_size(d.datname))        ELSE 'No Access'    END AS SIZEFROM pg_catalog.pg_database d    ORDER BY    CASE WHEN pg_catalog.has_database_privilege(d.datname, 'CONNECT')        THEN pg_catalog.pg_database_size(d.datname)        ELSE NULL    END DESC -- nulls first    LIMIT 20;
+SELECT * FROM pg_replication_slots;
+select * from pg_stat_archiver ;
+SELECT * FROM pg_logical_slot_peek_changes('regression_slot', NULL, NULL);
+SELECT * FROM pg_replication_slots;
+SELECT name, current_setting(name), source FROM pg_settings WHERE source NOT IN ('default', 'override'); 
+select * from pg_settings;
+select * from pg_settings limit 5;
+SELECT name, current_setting(name), short_desc, source FROM pg_settings WHERE source NOT IN ('default', 'override'); 
+SELECT name, current_setting(name), short_desc, source FROM pg_settings WHERE source NOT IN ('default', 'override'); 
+SELECT name, current_setting(name), short_desc, source FROM pg_settings ;
+;pgset
+SELECT name, current_setting(name), short_desc, source FROM pg_settings WHERE source NOT IN ('default', 'override'); 
+\c
+SELECT name, current_setting(name), short_desc, source FROM pg_settings WHERE source NOT IN ('default', 'override'); 
+SELECT *, pg_size_pretty(total_bytes) AS total    , pg_size_pretty(index_bytes) AS INDEX    , pg_size_pretty(toast_bytes) AS toast    , pg_size_pretty(table_bytes) AS TABLE  FROM (  SELECT *, total_bytes-index_bytes-COALESCE(toast_bytes,0) AS table_bytes FROM (      SELECT c.oid,nspname AS table_schema, relname AS TABLE_NAME              , c.reltuples AS row_estimate              , pg_total_relation_size(c.oid) AS total_bytes              , pg_indexes_size(c.oid) AS index_bytes              , pg_total_relation_size(reltoastrelid) AS toast_bytes          FROM pg_class c          LEFT JOIN pg_namespace n ON n.oid = c.relnamespace          WHERE relkind = 'r'  ) a) a;
+SELECT * FROM pg_stat_archiver;
+SELECT * FROM pg_replication_slots;
+select current_timestamp;
+SELECT * FROM pg_replication_slots;
+SELECT * FROM pg_stat_archiver;
+SELECT name, current_setting(name), short_desc, source FROM pg_settings WHERE source NOT IN ('default', 'override') ;
+SELECT name, current_setting(name), short_desc, source FROM pg_settings WHERE source NOT IN ('default', 'override')  and current_setting like '%wal%';
+SELECT name, current_setting(name), short_desc, source FROM pg_settings WHERE source NOT IN ('default', 'override')  and current_setting(name) like '%wal%';
+SELECT name, current_setting(name), short_desc, source FROM pg_settings WHERE source NOT IN ('default', 'override')  and current_setting(name) like '%rep%';
+select * from pg_settings limit 5;
+SELECT name, current_setting(name), short_desc, source FROM pg_settings WHERE source NOT IN ('default', 'override')  and name like '%rep%';
+SELECT name, current_setting(name), short_desc, source FROM pg_settings WHERE source NOT IN ('default', 'override')  and name like '%wal%';
+SELECT name, current_setting(name), short_desc, source FROM pg_settings WHERE source NOT IN ('default', 'override')  and name like '%rds%';
+SELECT name, current_setting(name), short_desc, source FROM pg_settings WHERE source NOT IN ('default', 'override')  and name like '%rds%' limit 10;
+SELECT * FROM pg_stat_archiver;
+select current_timestamp;
+SELECT * FROM pg_replication_slots;
+SELECT name, current_setting(name), short_desc, source FROM pg_settings WHERE source NOT IN ('default', 'override')  and name like '%log%' limit 10;
+SELECT name, current_setting(name), short_desc, source FROM pg_settings WHERE source NOT IN ('default', 'override')  and name like '%log_%' limit 10;
+SELECT name, current_setting(name), short_desc, source FROM pg_settings WHERE  name like '%log_st%' limit 10;
+SELECT name, current_setting(name), short_desc, source FROM pg_settings WHERE  name like '%log_min%' limit 10;
+— replication slots overview — https://www.postgresql.org/docs/9.5/static/logicaldecoding-example.html — https://blog.2ndquadrant.com/monitoring-wal-archiving-improves-postgresql-9-4-pg_stat_archiver/SELECT * FROM pg_replication_slots;
+-— replication slots overview —- https://www.postgresql.org/docs/9.5/static/logicaldecoding-example.html -— https://blog.2ndquadrant.com/monitoring-wal-archiving-improves-postgresql-9-4-pg_stat_archiver/SELECT * FROM pg_replication_slots;
+SELECT * FROM pg_replication_slots;
+SELECT * FROM pg_replication_slots;
+\q
