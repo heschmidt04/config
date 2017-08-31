@@ -1,0 +1,304 @@
+" before we get started
+"------------------------------------------------------------------------------
+"    http://stevelosh.com/blog/2010/09/coming-home-to-vim/#using-the-leader
+
+" fix the leader
+let mapleader = ","
+
+" turn filetype off
+filetype off                   " required!
+
+" drop compatability (plugin managers require it)
+set nocompatible               " be iMproved
+set modelines=0
+
+
+"" Set Color Scheme
+"------------------------------------------------------------------------------
+set t_Co=256
+set bg=dark
+set background=dark
+colorscheme gruvbox
+"colorscheme distinguished
+"highlight Normal ctermbg=NONE
+"highlight nonText ctermbg=NONE
+
+"" support for powerline & other python extensions
+python import sys; sys.path.append("/Library/Python/2.7/site-packages")
+python import sys; sys.path.append("/usr/local/lib/python2.7/site-packages/")
+
+
+""" set vim to automatically reload when vimrc changes
+"------------------------------------------------------------------------------
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
+
+
+"" plugins (via vundle)
+"------------------------------------------------------------------------------
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Plugin 'https://github.com/gmarik/vundle'
+
+" Brief help
+" :PluginList          - list configured plugins
+" :PluginInstall(!)    - install(update) plugins
+" :PluginSearch(!) foo - search(or refresh cache first) for foo
+" :PluginClean(!)      - confirm(or auto-approve) removal of unused
+" plugins
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Plugin command are not allowed..
+" My Plugins here:
+
+" original repos on github
+Plugin 'https://github.com/ngmy/vim-rubocop'
+Plugin 'https://github.com/tpope/vim-fugitive'
+Plugin 'https://github.com/tpope/vim-rails'
+Plugin 'https://github.com/rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'https://github.com/pangloss/vim-javascript'
+Plugin 'https://github.com/kien/ctrlp.vim'
+Plugin 'https://github.com/stephpy/vim-yaml'
+"Plugin 'https://github.com/scrooloose/nerdtree' "use ctrlp instead
+Plugin 'https://github.com/Lokaltog/vim-easymotion'
+Plugin 'https://github.com/Shougo/vinarise'
+
+" vim-scripts repos
+Plugin 'gundo'
+Plugin 'L9'
+Plugin 'FuzzyFinder'
+"Plugin 'command-t'
+
+""" powerline & alternatives...
+"Plugin 'bling/vim-airline'
+Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+set guifont=Inconsolata\ for\ Powerline:h14
+let g:Powerline_symbols = 'fancy'
+
+" CtrlP
+nnoremap <silent> t :CtrlP<cr>
+let g:ctrlp_working_path_mode = 2
+let g:ctrlp_by_filename = 1
+let g:ctrlp_max_files = 600
+let g:ctrlp_max_depth = 5
+
+
+""" bundles (via pathogen)
+"------------------------------------------------------------------------------
+execute pathogen#infect()
+call pathogen#incubate()
+
+
+""" These lines setup the environment to show graphics and colors correctly.
+"------------------------------------------------------------------------------
+set nocompatible
+set encoding=utf-8
+set t_Co=256
+set fillchars+=stl:\ ,stlnc:\
+set term=xterm-256color
+set termencoding=utf-8
+set guifont=Inconsolata\ for\ Powerline:h14
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+
+let g:minBufExplForceSyntaxEnable = 1
+if ! has('gui_running')
+   set ttimeoutlen=10
+   augroup FastEscape
+      autocmd!
+      au InsertEnter * set timeoutlen=0
+      au InsertLeave * set timeoutlen=1000
+   augroup END
+endif
+
+syntax on
+
+""" This group sets rulers and line highlighting
+"--------------------------------------------------
+"set wrap
+set textwidth=79
+set formatoptions=qrn1
+
+" horizontal & vertical guide/rule, and switching with <leader>-c/h
+"set colorcolumn=72    "recommended for git commit messages
+set colorcolumn=79
+"let &colorcolumn="79,".join(range(120,999),",") "white-space >= 120
+set nocursorcolumn
+highlight ColorColumn  ctermbg=235 guibg=#2c2d27
+highlight CursorLine   cterm=NONE ctermbg=darkgray ctermfg=white guibg=darkred guifg=white
+highlight CursorColumn cterm=NONE ctermbg=darkgray ctermfg=white guibg=darkred guifg=white
+nnoremap <Leader>c :set cursorline!<CR>
+nnoremap <Leader>C :set cursorcolumn!<CR>
+nnoremap <Leader>h :set colorcolumn=0<CR>
+nnoremap <Leader>H :set colorcolumn=79<CR>
+" only show horizontal line in current pane
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
+
+
+""" misc options
+"--------------------------------------------------
+set scrolloff=3
+set showmode
+"set noshowmode " hide mode text from powerline (e.g. -- INSERT -- below the statusline)
+set showcmd
+set hidden
+set wildmenu
+set wildmode=list:longest
+set visualbell
+set cursorline
+set ttyfast
+set backspace=indent,eol,start
+"set undofile
+
+
+""" searching and moving (movement)
+"--------------------------------------------------
+nnoremap / /\v
+vnoremap / /\v
+set ignorecase
+set smartcase
+set gdefault
+set incsearch
+set showmatch
+set hlsearch  " set search highlighting
+
+nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
+
+" temporary line map, use with <leader>-l
+nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
+nnoremap <silent> <Leader>L ml:execute 'match'<CR>
+
+""" remap <leader><space> to clear regex search/highlight
+nnoremap <leader><space> :noh<cr>
+nnoremap <tab> %
+vnoremap <tab> %
+
+
+""" indentation
+"--------------------------------------------------
+filetype plugin indent off
+set tabstop=2
+set shiftwidth=2    "Indent by N spaces when using >>, <<, == etc.
+set softtabstop=2   "Indent by N spaces when pressing <TAB>
+set expandtab       "Use softtabstop spaces instead of tab characters for indentation
+"set autoindent      "Keep indentation from previous line
+"set smartindent     "Automatically inserts indentation in some cases
+"set cindent         "Like smartindent, but stricter and more customisable
+
+if has ("autocmd")
+    " File type detection. Indent based on filetype. Recommended.
+    " filetype plugin indent on
+endif
+set pastetoggle=<F10>
+set paste
+
+
+""" configure line numbering
+"--------------------------------------------------
+set ruler
+set number
+set relativenumber
+" allow toggling of line numbers using enter key
+nmap <silent> <C-m> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
+"nmap <silent> <C-m> :exec &nu? "se nu! relativenumber!" : "se nu"<CR>
+
+""" set status line
+"--------------------------------------------------
+set statusline=%t       "tail of the filename
+set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+set statusline+=%{&ff}] "file format
+set statusline+=%h      "help file flag
+set statusline+=%m      "modified flag
+set statusline+=%r      "read only flag
+set statusline+=%y      "filetype
+set statusline+=%=      "left/right separator
+set statusline+=%c,     "cursor column
+set statusline+=%l/%L   "cursor line/total lines
+set statusline+=\ %P    "percent through file
+set laststatus=2
+
+
+"" Setup additional plugins
+"------------------------------------------------------------------------------
+
+"" Setup NERDTREE
+"--------------------------------------------------
+"nmap <leader>ne :NERDTree<cr>
+"map <C-n> :NERDTreeToggle<CR>
+"autocmd vimenter * if !argc() | NERDTree | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+
+"" SETUP for ctrl-p
+"--------------------------------------------------
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+
+"" diff with saved
+"--------------------------------------------------
+let g:differ_is_open = 0
+function! DiffToggle()
+    if g:differ_is_open
+        let g:differ_is_open = 0
+        q
+    else
+        let filetype=&ft
+        let g:differ_is_open = 1
+        diffthis
+        vnew | r # | normal! 1Gdd
+        diffthis
+        exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+        let g:differ_is_open = 1
+    endif
+endfunction
+map <C-f> :call DiffToggle() <CR>
+
+
+"" custom LEADERS
+"------------------------------------------------------------------------------
+"http://stevelosh.com/blog/2010/09/coming-home-to-vim/#using-the-leader
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+
+" toggle gundo
+nnoremap <F5> :GundoToggle<CR>
+
+" reselect pasted text (for things like indentation)
+nnoremap <leader>v V`]
+
+" quickly edit ~/.vimrc
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+
+" alternative for ESC
+inoremap jj <ESC>
+
+" open a new window and switch to it
+nnoremap <leader>w <C-w>v<C-w>l
+
+" navigate current splits
+nnoremap <C-w><left> <C-w>h
+nnoremap <C-up><up> <C-w>k
+nnoremap <C-w><down> <C-w>j
+nnoremap <C-w><right> <C-w>l
+
+" ack...
+nnoremap <leader>a :Ack
+
+" yankring (cmd-p, the ultimate paste, across vim sessions)
+"nnoremap <silent> <F3> :YRShow<cr>
+"inoremap <silent> <F3> <ESC>:YRShow<cr>
+"nnoremap <silent> <F11> :YRShow<CR>
+
+" surround...
+" nnoremap <leader>s :cs  " conflict with something else at the moment
+
+" quick shell
+nnoremap <leader>z :!$SHELL<cr>
+

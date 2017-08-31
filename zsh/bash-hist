@@ -1,0 +1,500 @@
+boot2docker ip
+env | grep DOCK
+docker info
+echo "If these don't return check the IP versus env settings for IP"
+ifconfig -a
+env | grep DOCK
+export DOCKER_HOST tcp://192.168.59.3:2376
+export DOCKER_HOST=tcp://192.168.59.3:2376
+env | grep DOCK
+docker info
+
+eval "$(boot2docker shellinit)"
+env | grep DOCK
+history | grep docker
+boot2docker stop
+boot2docker poweroff
+boot2docker delete
+boot2docker init
+boot2docker boot
+ifconfig -a | tail -5
+docker info
+   export DOCKER_HOST=tcp://192.168.59.105:2376
+    export DOCKER_CERT_PATH=/Users/heidischmidt/.boot2docker/certs/boot2docker-vm
+    export DOCKER_TLS_VERIFY=1
+docker info
+eval "$(boot2docker shellinit)"
+docker info
+docker run hello-world
+grep failed /var/log/docker.log 
+ls -ltra /var/log/docker.log 
+ls -ltra /var/log/
+ls -ltra /var/log/*dock*
+sudo openssl x509 -text -in /var/lib/boot2docker/tls/server.pem | grep DNS
+boot2docker ssh 
+boot2docker ssh 
+docker info
+boot2docker stop
+boot2docker start
+boot2docker ssh 
+ifconfig -a
+env | grep DOCK
+docker run hello-world
+boot2docker ssh 
+eval "$(boot2docker shellinit)"
+env | grep DOCK
+eval "$(boot2docker shellinit)"
+docker info
+docker run hello-world
+cd
+cd Documents/git/
+git clone https://github.com/meyouhealth/myh-aws
+git clone https://github.com/meyouhealth/myh-aws
+ls -ltra
+cd myh-aws/
+ls -ltra
+more .ruby-version 
+ruby -V
+ruby -v
+bundle install
+gem install bundler 
+more Gemfile
+more Gemfile.lock 
+bundle install 
+pwd
+cd
+vi .aws-account.yml
+vi .aws-account.yml
+cat .aws-account.yml
+pwd
+pwd
+cd Documents/git/myh-aws/
+ls -ltra
+pwd
+cd /Users/heidischmidt/Documents/git/myh-aws
+tree
+brew install tree
+tree
+cd bin
+ls -ltra
+./aws-info 
+pwd
+ls -ltra /Users/heidischmidt/.aws-accounts.yml
+ls -ltra /Users/heidischmidt/.aws-*
+mv /Users/heidischmidt/.aws-account.yml /Users/heidischmidt/.aws-accounts.yml
+./aws-info 
+./aws-info i-ee15c210
+pwd
+cd
+pwd
+echo $PATH 
+cd /usr/local/bin 
+ln -s ~/Documents/git/myh-aws/bin/aws-info  
+ls -ltra
+ls -ltra /Users/heidischmidt/Documents/git/myh-aws/bin/
+ln -s ~/Documents/git/myh-aws/bin/aws-events 
+aws-events
+aws-events i-ea3a9f39
+aws-info i-ea3a9f39
+exit
+env | grep DOCK
+env | grep DOCK
+ifconfig -a
+clear
+exit
+Fr0uFr0uF0x3s
+boot2docker up
+eval "$(boot2docker shellinit)"
+boot2docker ip
+env | grep DOCK
+docker info
+echo "If these don't return check the IP versus env settings for IP"
+docker info
+boot2docker ssh 
+brew install ghostscript
+brew install imagemagick
+cd ~/Documents/git
+ls
+git clone git@github.com:meyouhealth/walkadoo.git
+history | grep git 
+git clone git@github.com:meyouhealth/chef-repo.git
+git clone git@github.com:meyouhealth/walkadoo.git
+git clone git@github.com:meyouhealth/chef-dailychallenge.git
+history | grep boot2docker 
+history | grep mem
+docker run -p 11211:11211 memcached
+docker run -p 3306:3306 mysql
+docker run -p 3306:3306 mysql -e MYSQL_ROOT_PASSWORD=docked
+cd ~/Documents/git
+cd ../
+curl --location https://raw.githubusercontent.com/coreos/docs/master/enterprise-registry/mysql-container/provision_mysql.sh -o /tmp/provision_mysql.sh -#
+vi /tmp/provision_mysql.sh
+cd ~/Documents/git
+git clone git@github.com:meyouhealth/hippo.git
+cd 
+cd .ssh
+ls -ltra
+cat id_rsa.pub
+grep 93:89:f4:aa:3e:97:51:c8:01:0b:7d:17:24:c5:2b:05 id_rsa.pub
+history | grep ssh
+ssh -T git@github.com
+eval "$(ssh-agent -s)"
+ssh -T git@github.com
+cd ~/Documents/git
+git clone git@github.com:meyouhealth/hippo.git
+cd
+cd .ssh 
+ls -ltra
+cd ~/Documents/git
+git clone git@github.com:meyouhealth/hippo.git
+git clone git@github.com:meyouhealth/hippo.git
+brew list | grep ssh
+which ssh-keygen
+file /usr/bin/ssh-keygen
+aws-info i-2f5991d0
+nslookup i-2f5991d0
+nslookup 54.144.15.101
+nslookup 10.0.4.121
+cd ~/Documents/git
+cd
+cd .ssh 
+ls -ltra
+cat id_rsa.pub 
+cd ~/Documents/git
+ls -ltra
+git clone git@github.com:meyouhealth/walkadoo.git
+ls -ltra
+cd 
+cd .ssh 
+ls -ltra
+cat id_rsa
+git config
+cd 
+more .gitconfig 
+cd .ssh
+ls -ltra
+more known_hosts 
+ssh-keygen -p -P C0nf1d3nt -N C0nf1d3nt -f .ssh/id_rsa
+pwd
+ssh-keygen -p -P C0nf1d3nt -N C0nf1d3nt -f /Users/heidischmidt/.ssh/id_rsa
+cd
+cd .ssh 
+ls -ltra
+mv id_rsa.pub id_rsa.pub.old 
+mv id_rsa id_rsa.old
+history | grep ssh 
+clear
+ssh-keygen -t rsa -b 4096 -C "heidi.schmidt@meyouhealth.com"
+pwd
+ls -ltra
+cat id_rsa.pub
+history | grep git
+history | grep ssh
+cd ~/Documents/git
+git clone git@github.com:meyouhealth/walkadoo.git
+ls -ltra
+history | tail -20 
+history | tail -100
+history | grep docker
+docker run -p 3306:3306 --name myh-hes-mysql -e MYSQL_ROOT_PASSWORD=docked -d mysql:tag
+docker run -p 3306:3306 --name myh-hes-mysql -e MYSQL_ROOT_PASSWORD=docked mysql:5.6
+ 
+ls -ltra /sys/class
+ls -ltra /sys/
+boot2docker ssh 
+boot2docker ssh 
+ls -ltra
+cd .ssh 
+ls -ltra
+ssh-keygen -p 
+cd ~/Documents/git
+ssh-agent -D 
+ssh-add -D 
+cd ~/Documents/git
+ls -ltra
+cd walkadoo/
+git pull
+git pull
+git pull
+git pull
+ls -l 
+cd ../
+ls -ltra
+cd myh-aws
+git pull
+history | grep myh-aws
+pwd
+cd ../
+rm -rf myh-aws/
+git clone https://github.com/meyouhealth/myh-aws
+git clone https://github.com/meyouhealth/myh-aws
+ls -ltra
+ls -l /usr/local/bin
+ls -l /usr/local/bin/aws-*
+pwd
+ls -ltra
+pwd
+ls -ltra
+cd myh-aws
+ls -ltra
+ls -l .git
+more .git/config 
+more ../walkadoo/.git/config 
+cp .git/config .git/config.orig
+vi .git/config
+git pull
+ls -ltra
+cd ../
+ls -ltra
+grep url */*.git/config
+grep url **/*.git/config
+ls -l */.git
+ls -l */.git/config
+grep -i url  */.git/config
+vi spectacle/.git/config 
+cd spectacle 
+git pull
+cd ../
+vi boot2docker/.git/config
+cd boot2docker/
+git pull
+cd ../
+ls -ltra
+cd zsh-code/
+ls -ltra
+git pull
+ls -ltra
+cd ../
+grep -i url  */.git/config
+ls -ltra
+pwd
+history | tail -20 
+history | tail -40
+cd 
+cd
+ls -ltra
+cd Documents/
+vi docker_mysql_testing
+boot2docker ssh 
+boot2docker ssh 
+boot2docker ssh 
+boot2docker ssh 
+doot2docker stop
+boot2docker stop
+exit
+Fr0uFr0uF0x3shistory 
+history
+home
+clear
+cd Documents/
+vi docker_ssh_shell_exec_notes
+vi docker_ssh_shell_exec_notes
+ls -l /Users/heidischmidt/Downloads/TheDockerBook.pdf
+cd ~/Documents/git
+git clone git://github.com/jamtur01/dockerbook-code.git
+ls -ltra
+aws-info vpc-13956976
+aws-info i-a55f798f
+aws-info i-27e5afdd
+pwd
+cd ~/Documents/git
+ls -ltra
+cd walkadoo/
+git pull
+uname -a
+which zfs
+man -k aufs
+vi docker_ssh_shell_exec_notes
+cd 
+cd Documents/
+vi docker_ssh_shell_exec_notes
+vi docker_ssh_shell_exec_notes
+vi docker_ssh_shell_exec_notes
+which curl
+docker info
+docker ps
+echo $DOCKER_HOST
+boot2docker ip
+curl localhost 192.168.59.105:49155
+ps -ef | grep docker
+ls -l /var/log/upstart
+ls -l /var/log/
+ls -l /var/log/*docker*
+env | grep -i debug
+env | grep =i DOCK
+env | grep -i DOCK
+ls -l /etc/init.d/*docker*
+ls -l /etc/init.d/
+sudo server docker status
+sudo service docker status
+docker status
+cd ~/Documents/git
+ls -ltra
+cd boot2docker
+ls -ltra
+more README.md 
+pwd
+cd 
+cd Documents/
+ls -ltra
+vi docker_ssh_shell_exec_notes 
+brew list | grep -i docker
+vi docker_ssh_shell_exec_notes 
+brew list pip
+pwd
+pwd
+ls -ltra
+python get-pip.py
+which wheel
+pip install -U setuptools
+aws ec2 describe-instances
+ls -ltra
+vi docker_mysql_testing 
+vi docker_ssh_shell_exec_notes 
+more *boot2docker_exercises_mysql
+more *boot2docker_exercises_mysql*
+mv boot2docker_exercises_mysql* boot2docker_setup_exercises.rtf
+ls -ltra
+more docker_at_home_ip_conflict_for_certificates.rtf 
+mv docker_at_home_ip_conflict_for_certificates.rtf  docker_at_home_bug_issues.rtf
+ls -ltra
+more test
+rm test
+ls -ltra
+more boot2docker_config_before_delete.log 
+vi docker_ssh_shell_exec_notes 
+history | grep aws
+aws ec2 describe-instances
+aws configure
+aws ec2 describe-instances
+aws configure
+aws ec2 describe-instances
+aws configure
+locate aws
+locate aws | grep yml
+cd ~/Documents/git
+ls -ltr
+cd myh-aws
+ls -ltra
+find . -name "*.yml" -print
+tree
+history | grep yml
+cat /Users/heidischmidt/.aws-accounts.yml
+ps -ef | grep docker
+ps -ef | grep docker
+pip list
+boot2docker ssh 
+date
+pwd
+cat Dockerfile
+sudo docker build -t="mysql_local_build_071015"
+docker build -t="mysql_local_build_071015"
+docker build -t="mysql_local_build:v1" .
+date
+exit
+pwd
+date
+cat Dockerfile
+diff -u DockerfileMySQLOriginal Dockerfile
+exit
+pwd
+docker build -t="mysql_local_build:v1" .
+docker build -t="mysql_local_build" .
+docker run -t -i 762fb11646e2 /bin/bash
+exit
+boot2docker up 
+eval "$(boot2docker shellinit)"
+boot2docker ip
+env | grep DOCK
+docker info
+echo "If these don't return check the IP versus env settings for IP"
+boot2docker ssh 
+eval "$(boot2docker shellinit)"
+boot2docker ip
+env | grep DOCK
+docker info
+echo "If these don't return check the IP versus env settings for IP"
+brew list | grep zsh 
+brew install zsh zsh-completions
+cd
+vi .zshrc
+chmod go-w /usr/local/share
+zsh 
+curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+vi .zshrc
+more .zshrc.pre-oh-my-zsh
+vi .zshrc
+cd 
+ls -ltra
+mkdir Projects
+mkdir Projects/config
+vi Projects/config/env.sh 
+docker images
+docker ps
+docker ps -a
+docker logs f143548c06b7
+docker rm f143548c06b7
+docker ps -a -s
+docker 
+docker pull mysql:5.7
+docker images
+locate Dockerfile
+locate Docker
+docker login 
+Documnets
+Documents/
+cd Documents/
+cd ../Downloads/
+ls -ltra
+rm -rf innotop-1.6.0.tar.gz
+vi innotop_link_and_info
+pwd
+cd ../Documents/
+ls -ltra
+more DockerfileMySQLwip56 
+vi DockerfileMySQLwip56 
+vi DockerfileMySQLwip56 
+cp DockerfileMySQLwip56 ~/Documents/git/
+mkdir hes_docker_mysql
+mv DockerfileMySQLwip56 hes_docker_mysql/
+cd hes_docker_mysql/
+touch Dockerfile
+vi Dockerfile
+ls -ltra
+more DockerfileMySQLwip56
+vi Dockerfile\
+script /tmp/docker_build_session_071015.log
+docker run -t -i a5e5891111da /bin/bash 
+ps -a
+docker ps -a
+docker run -t -i ac7c7acd8313 /bin/bash 
+docker run -t -i 762fb11646e2/bin/bash 
+docker run -t -i 762fb11646e2 /bin/bash 
+docker ps -a
+docker rm 246cd2c8ff3d
+docker rm 0d59474bbd5f
+docker rm 157ed0ae4994
+docker ps -a
+pwd
+ls -ltra
+rm DockerfileMySQLwip56 
+vi DockerfileMySQLOriginal 
+cp Dockerfile Dockerfile.v1
+cp DockerfileMySQLOriginal Dockerfile
+script /tmp/docker_build_session_test_repo_dockerfile_071015.log
+script /tmp/docker_build_session_test_repo_dockerfile_071015.log
+more Dockerfile
+ls -ltra
+more Dockerfile.v1
+ls -ltra
+docker build -t="mysql_from_repo_file"
+docker build -t="mysql_from_repo_file" .
+vi Dockerfile
+docker build -t="mysql_from_repo_file" .
+docker search debian
+wget https://index.docker.io/v1/search?q=debian
+ls -ltra
+vi Dockerfile
+docker build -t="mysql_from_repo_file" .
+boot2docker stop
+exit
